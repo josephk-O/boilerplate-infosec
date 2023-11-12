@@ -1,7 +1,8 @@
 const express = require('express');
-const app = express('helmet');
-
-
+const app = express();
+const helmet = express('helmet');
+helmet();
+  
 
 
 
