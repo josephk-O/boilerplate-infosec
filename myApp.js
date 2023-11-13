@@ -44,15 +44,15 @@ const serverless = require=('serverless-http');
 
 
 
-
-
-
-module.exports = app;
-const api = require('./server.js');
 app.use(express.static('public'));
 app.disable('strict-transport-security');
 
+
+
+
+const api = require('./server.js');
 app.use('/_api', api);
+
 // module.exports.handler = serverless(app);
 
 app.get("/", function (request, response) {
@@ -62,3 +62,6 @@ let port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Your app is listening on port ${port}`);
 });
+
+
+module.exports = app;
