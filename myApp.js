@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
 const serverless = require=('serverless-http');
-const helmet = require('helmet');
+
+let helmet = require('helmet');
 
 
 
@@ -45,7 +46,7 @@ const helmet = require('helmet');
 
 
 
-app.use(helmet());
+
 app.use(express.static('public'));
 app.disable('strict-transport-security');
 
