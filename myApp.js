@@ -53,7 +53,7 @@ app.use(express.static('public'));
 app.disable('strict-transport-security');
 
 app.use('/_api', api);
-module.exports.handler = serverless(app);
+// module.exports.handler = serverless(app);
 
 app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
