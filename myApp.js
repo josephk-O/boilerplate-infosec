@@ -3,55 +3,27 @@ const helmet = require('helmet');
 const app = express();
 
 
+app.use(helmet({
+  frameguard: {         // configure
+    action: 'deny'
+  },
+  contentSecurityPolicy: {    // enable and configure
+    directives: {
+      defaultSrc: ["'self'"],
+      styleSrc: ["'self'",'trusted-cdn.com'],
+    }
+  },
+  dnsPrefetchControl: false,     // disable
+  noCache: false,
+  hsts: {maxAge: 90*24*60*60, force: true},
+  ieNoOpen: true,
+  xssFilter: true,
+  noSniff: true,
+  hidePoweredBy: true,
+}))
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-app.use(helmet.dnsPrefetchControl());
-app.use(helmet.hsts(
-  {maxAge: 90*24*60*60, force: true}
-))
-app.use(helmet.ieNoOpen());
-app.use(helmet.noSniff());
-app.use(helmet.xssFilter());
-app.use(helmet.frameguard(
-  {action: 'deny'}
-));
-app.use(helmet.hidePoweredBy());
 module.exports = app;
 const api = require('./server.js');
 app.use(express.static('public'));
